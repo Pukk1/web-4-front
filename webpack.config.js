@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: "./src/client/index.tsx",
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {

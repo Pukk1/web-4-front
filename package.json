@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "npx webpack-dev-server --mode development",
     "start": "webpack serve --mode production --port 3000",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start:ssr": "node ./src/server/index.js",
+    "build:ts": "tsc"
   },
   "author": "pukki",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "@types/react-dom": "^18.2.4",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
+    "express": "^4.18.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
     "typescript": "^5.0.4",
