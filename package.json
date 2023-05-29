@@ -1,0 +1,11 @@
+{
+  "name": "web-4-front",
+  "version": "1.0.0",
+  "description": "Web lab 4 for Martin. Front",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pukki",
+  "license": "ISC"
+}
