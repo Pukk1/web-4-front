@@ -15,6 +15,7 @@
     "@babel/core": "7.22.1",
     "@babel/preset-env": "7.22.2",
     "@babel/preset-react": "7.22.3",
+    "@babel/preset-typescript": "^7.21.5",
     "@types/express": "^4.17.17",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
