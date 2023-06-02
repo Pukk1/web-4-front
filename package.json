@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack-dev-server --mode development",
-    "prestart:ssr": "webpack --mode=production",
+    "tsc": "tsc",
+    "prestart:ssr": "webpack --mode production",
     "start:ssr": "node src/server/index.js"
   },
   "author": "pukki",
@@ -26,6 +27,7 @@
     "css-loader": "^6.8.1",
     "express": "^4.18.2",
     "ignore-styles": "^5.0.1",
+    "react-router-dom": "^6.11.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
     "typescript": "^5.0.4",

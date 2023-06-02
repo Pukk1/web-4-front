@@ -1,3 +1,5 @@
+import {StaticRouter} from "react-router-dom/server";
+
 const express = require( 'express' );
 const fs = require( 'fs' );
 const path = require( 'path' );
@@ -18,7 +20,11 @@ app.use( '*', ( req, res ) => {
     } );
 
 // получаем HTML строку из компонента 'App'
-    let appHTML = ReactDOMServer.renderToString( <App /> )
+    let appHTML = ReactDOMServer.renderToString(
+        <StaticRouter location={req.originalUrl}>
+            <App/>
+        </StaticRouter>
+    )
 
 // заполняем элемент '#app' содержимым из 'appHTML'
     indexHTML = indexHTML.replace( '<div id="root"></div>', `<div id="root">${ appHTML }</div>` )
