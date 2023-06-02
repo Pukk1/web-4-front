@@ -1,6 +1,8 @@
 {
+  "include": [
+    "src/client/*"
+  ],
   "compilerOptions": {
-    "rootDir": "./src/client/",
     "outDir": "./dist/build",
     "sourceMap": true,
     "noImplicitAny": true,

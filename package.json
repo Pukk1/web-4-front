@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack-dev-server --mode development",
-    "tsc": "tsc",
-    "prestart:ssr": "webpack --mode production",
+    "prestart:ssr": "webpack --mode production && tsc",
     "start:ssr": "node src/server/index.js"
   },
   "author": "pukki",
