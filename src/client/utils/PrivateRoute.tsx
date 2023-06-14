@@ -1,20 +1,19 @@
 import * as React from "react";
 import {ReactElement} from "react";
-import {CurrentAccountType} from "../context/store";
 import {Navigate} from "react-router-dom";
 
 interface PrivateRouteProps {
-    currentAccount: CurrentAccountType,
+    isAccessible: boolean,
     redirectPath: string,
     child: ReactElement,
 }
 
-const PrivateRoute = ({currentAccount, redirectPath, child}: PrivateRouteProps) => {
+const PrivateRoute = ({isAccessible, redirectPath, child}: PrivateRouteProps) => {
 
-    if (currentAccount !== null) {
-        return <Navigate to={redirectPath} replace={true}/>;
-    } else {
+    if (isAccessible) {
         return child;
+    } else {
+        return <Navigate to={redirectPath} replace={true}/>;
     }
 }
 

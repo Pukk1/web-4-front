@@ -17,8 +17,18 @@ const App = () => {
             <AppHeader currentAccount={currentAccount} onLogout={onLogout}/>
         </div>
         <Routes>
-            <Route path={"/"} element={<Login/>}/>
-            <Route path={"main"} element={<PrivateRoute currentAccount={currentAccount} child={<Main/>} redirectPath="/"/>}/>
+            <Route path={"/"} element={
+                <PrivateRoute
+                    isAccessible={currentAccount === null}
+                    child={<Login/>}
+                    redirectPath={"/main"}/>
+            }/>
+            <Route path={"main"} element={
+                <PrivateRoute
+                    isAccessible={currentAccount !== null}
+                    child={<Main/>}
+                    redirectPath="/"/>
+            }/>
         </Routes>
     </div>)
 
