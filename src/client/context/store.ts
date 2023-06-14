@@ -1,4 +1,4 @@
-import create from 'zustand';
+import {create} from 'zustand';
 
 export type AccessTokenType = string | null
 export type CurrentAccountType = Account | null
@@ -12,24 +12,27 @@ export interface Store {
     accessToken: AccessTokenType,
     currentAccount: CurrentAccountType,
 
-    _setAccessToken: (accessToken: AccessTokenType) => void
+    setAccessToken: (accessToken: AccessTokenType) => void
     _setCurrentAccount: (currentAccount: CurrentAccountType) => void
     logOut: LogOutType
+}
+
+export const printError = (error: string) => {
+    console.log(error)
 }
 
 export const useStore = create<Store>((set, get) => ({
     accessToken: null,
     currentAccount: null,
 
-    _setAccessToken: (accessToken) =>
+    setAccessToken: (accessToken) =>
         set((store: Store) => ({accessToken: accessToken})),
     _setCurrentAccount: (currentAccount: CurrentAccountType) =>
         set((store: Store) => ({currentAccount: currentAccount})),
 
     logOut: () => set((store: Store) => {
         store._setCurrentAccount(null)
-        store._setAccessToken(null)
+        store.setAccessToken(null)
         return {}
     }),
-
 }))
