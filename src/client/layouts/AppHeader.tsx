@@ -1,5 +1,5 @@
 import * as React from "react";
-import {CurrentAccountType, LogOutType} from "../../../services/store/store";
+import {CurrentAccountType, LogOutType} from "../context/store";
 
 interface AppHeaderProps {
     currentAccount: CurrentAccountType,

@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Route, Routes} from "react-router-dom";
-import Login from "./login/Login/Login";
-import AppHeader from "./common/header/AppHeader";
-import PrivateRoute from "../utils/PrivateRoute/PrivateRoute";
-import {useStore} from "../services/store/store";
-import Main from "./main/Main/Main";
+import Login from "./pages/Login";
+import AppHeader from "./layouts/AppHeader";
+import PrivateRoute from "./utils/PrivateRoute";
+import {useStore} from "./context/store";
+import Main from "./pages/Main";
 
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
         </div>
         <Routes>
             <Route path={"/"} element={<Login/>}/>
-            <Route path={"main"} element={<PrivateRoute currentAccount={currentAccount} child={<Main/>}/>}/>
+            <Route path={"main"} element={<PrivateRoute currentAccount={currentAccount} child={<Main/>} redirectPath="/"/>}/>
         </Routes>
     </div>)
 
