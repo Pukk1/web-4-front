@@ -35,6 +35,7 @@ module.exports = {
         devMiddleware: {
             publicPath: "/dist/",
         },
+        historyApiFallback: true,
         port: 3000,
         hot: "only"
     },
