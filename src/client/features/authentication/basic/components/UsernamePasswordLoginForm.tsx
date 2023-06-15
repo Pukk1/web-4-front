@@ -1,9 +1,13 @@
 import * as React from "react";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {printError, useStore} from "../../../../context/store";
 import {loginApiCall} from "../services/basicAuth";
 import jwtDecode from "jwt-decode";
+
+export interface AuthToken {
+    name: string;
+}
 
 const UsernamePasswordLoginForm = () => {
 
@@ -14,13 +18,13 @@ const UsernamePasswordLoginForm = () => {
     const setAccessToken = useStore(state => state.setAccessToken)
     const setCurrentAccount = useStore(state => state.setCurrentAccount)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
 
         loginApiCall(username, password)
             .then(response => {
                 const token = response.headers['authorization']
-                const accountName = jwtDecode(token)['name'];
+                const accountName = jwtDecode<AuthToken>(token)['name'];
 
                 setAccessToken(token)
                 setCurrentAccount({name: accountName})

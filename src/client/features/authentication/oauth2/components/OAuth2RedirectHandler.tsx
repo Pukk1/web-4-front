@@ -2,6 +2,7 @@ import * as React from "react";
 import {Navigate, useLocation} from "react-router-dom";
 import {printError, useStore} from "../../../../context/store";
 import jwtDecode from "jwt-decode";
+import {AuthToken} from "../../basic/components/UsernamePasswordLoginForm";
 
 const OAuth2RedirectHandler = () => {
 
@@ -22,7 +23,7 @@ const OAuth2RedirectHandler = () => {
 
 
     if (token) {
-        const accountName = jwtDecode(token)['name'];
+        const accountName = jwtDecode<AuthToken>(token)['name'];
 
         setAccessToken(token)
         setCurrentAccount({name: accountName})

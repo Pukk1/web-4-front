@@ -48,7 +48,7 @@ import {API_BASE_URL} from "../../../../data/constants";
 //     });
 // }
 
-export const loginApiCall = (username, password) => {
+export const loginApiCall = (username: string, password: string) => {
     return axios
         .post(API_BASE_URL + "/login/basic", {}, {
             headers: {
@@ -57,7 +57,7 @@ export const loginApiCall = (username, password) => {
         })
 }
 
-function genBasicAuthHash(user, password) {
+function genBasicAuthHash(user: string, password: string) {
     let token = user + ":" + password;
 
     // Should i be encoding this value????? does it matter???
