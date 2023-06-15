@@ -48,7 +48,7 @@ const UsernamePasswordLoginForm = () => {
                    onChange={(event) => setUsername(event.target.value)}/>
             <input name="password" type="password" placeholder="Password" value={password}
                    onChange={(event) => setPassword(event.target.value)}/>
-            <button type="submit">Login</button>
+            <button type="submit" className="btn btn-active btn-success">Login</button>
         </form>
         <span className="register-link">New user? <Link to="/auth/registration">Registration!</Link></span>
     </div>
