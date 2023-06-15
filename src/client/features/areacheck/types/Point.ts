@@ -1,7 +1,7 @@
-export type DotType = {
+export type PointType = {
     id?: number,
     x: number,
     y: number,
     r: number,
-    get?: boolean
+    hit: boolean
 }

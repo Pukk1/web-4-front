@@ -1,14 +1,14 @@
 import * as React from "react";
 import Inputs from "./inputs/Inputs";
 import AreaContainer from "./area/AreaContainer";
-import {DotType} from "../types/Point";
+import {PointType} from "../types/Point";
 import {useAreaStore} from "../../../context/areaStore";
 import {useStore} from "../../../context/store";
 
 const AreaCheck = () => {
 
 
-    const dots: Array<DotType> = useAreaStore(state => state.dots)
+    const dots: Array<PointType> = useAreaStore(state => state.dots)
     const sendDot = useAreaStore(state => state.sendDot)
     // const rRef: any = useRef()
     const setErrX = useAreaStore(state => state.setXErr)

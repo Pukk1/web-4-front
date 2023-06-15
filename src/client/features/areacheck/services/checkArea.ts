@@ -1,9 +1,9 @@
-import {DotType} from "../types/Point";
+import {PointType} from "../types/Point";
 import {API_BASE_URL} from "../../../data/constants";
 import axios from "axios";
 import {AccessTokenType} from "../../../context/store";
 
-export const sendDot = (dot: DotType, token: AccessTokenType) => {
+export const sendDot = (dot: PointType, token: AccessTokenType) => {
     // axios({
     //     method: 'put',
     //     url: API_BASE_URL + `/add-dot`,

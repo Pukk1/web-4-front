@@ -1,17 +1,17 @@
 import * as React from "react";
 import {useAreaStore} from "../../../../context/areaStore";
-import {DotType} from "../../types/Point";
+import {PointType} from "../../types/Point";
 
 const Results = () => {
 
     const dots = useAreaStore(state=>state.dots)
-    let res = dots.map((item:DotType) => {
+    let res = dots.map((item:PointType) => {
         return <tr key={item.id}>
             <th>{item.id}</th>
             <td>{item.x}</td>
             <td>{item.y}</td>
             <td>{item.r}</td>
-            <td>{String(item.get)}</td>
+            <td>{String(item.hit)}</td>
         </tr>;
     });
 
@@ -28,6 +28,7 @@ const Results = () => {
             </tr>
             </thead>
             <tbody>
+            {res}
             </tbody>
             <tfoot>
             <tr>

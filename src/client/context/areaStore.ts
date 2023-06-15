@@ -1,16 +1,16 @@
 import {create} from "zustand";
-import {DotType} from "../features/areacheck/types/Point";
+import {PointType} from "../features/areacheck/types/Point";
 import {sendDot} from "../features/areacheck/services/checkArea";
 import {AccessTokenType} from "./store";
 import {response} from "express";
 
 export interface AreaStore {
 
-    dots: Array<DotType>
+    dots: Array<PointType>
 
-    setDot: (dot: DotType) => void
-    setDots: (dots: Array<DotType>) => void
-    sendDot: (dot: DotType, accessToken: AccessTokenType) => void
+    setDot: (dot: PointType) => void
+    setDots: (dots: Array<PointType>) => void
+    sendDot: (dot: PointType, accessToken: AccessTokenType) => void
 
     message: string,
     xErr: string,
@@ -28,19 +28,26 @@ export const useAreaStore = create<AreaStore>((set, get) => ({
 
     dots: [],
 
-    setDots: (dots: Array<DotType>) => set((state: AreaStore) => {
+    setDots: (dots: Array<PointType>) => set((state: AreaStore) => {
         state.dots = dots
         return {}
     }),
-    setDot: (dot: DotType) => set((state: AreaStore) => ({
+    setDot: (dot: PointType) => set((state: AreaStore) => ({
         dots: [dot].concat(state.dots)
     })),
 
-    sendDot: (dot: DotType, token: AccessTokenType) => set((state: AreaStore) => {
+    sendDot: (dot: PointType, token: AccessTokenType) => set((state: AreaStore) => {
         sendDot(dot, token)
             .then(response => {
                     if (response.status == 200) {
-                        state.setDot(dot)
+                        const data = response.data
+                        const newPoint : PointType = {
+                            x: data.x,
+                            y: data.y,
+                            r: data.r,
+                            hit: data.hit
+                        }
+                        state.setDot(newPoint)
                     }
                 }
             )
