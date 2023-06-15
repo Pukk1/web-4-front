@@ -1,7 +1,7 @@
 import {NewPoint} from "../types";
 import {API_BASE_URL} from "../../../data/constants";
 import axios from "axios";
-import {AccessToken, Access} from "../../../context/store";
+import {Access, AccessToken} from "../../../context/store";
 
 export const sendDot = (dot: NewPoint, token: AccessToken) => {
 
@@ -26,4 +26,18 @@ export const getAllAccountDots = (access: Access) => {
                 'username': access.username
             }
         })
+}
+
+export const cleanDots = (access: Access) => {
+    return axios.delete(
+        API_BASE_URL + '/api/v1/area-point/delete-all',
+        {
+            headers: {
+                'Authorization': "Bearer " + access.accessToken,
+            },
+            params: {
+                'username': access.username
+            }
+        }
+    )
 }

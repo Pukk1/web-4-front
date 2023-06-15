@@ -1,7 +1,8 @@
 import {create} from "zustand";
 import {NewPoint, StoredPoint} from "../features/areacheck/types";
-import {sendDot} from "../features/areacheck/services/checkArea";
-import {AccessToken} from "./store";
+import {cleanDots, sendDot} from "../features/areacheck/services/checkArea";
+import {Access, AccessToken} from "./store";
+import {response} from "express";
 
 export type AreaStore = {
 
@@ -21,6 +22,8 @@ export type AreaStore = {
     setYErr: (mess: string) => void
     setRErr: (mess: string) => void
     setRParam: (r: number) => void
+
+    cleanDots: (access: Access) => void
 }
 
 export const useAreaStore = create<AreaStore>((set, get) => ({
@@ -40,7 +43,7 @@ export const useAreaStore = create<AreaStore>((set, get) => ({
             .then(response => {
                     if (response.status == 200) {
                         const data = response.data
-                        const newPoint : StoredPoint = {
+                        const newPoint: StoredPoint = {
                             id: data.id,
                             x: data.x,
                             y: data.y,
@@ -52,6 +55,16 @@ export const useAreaStore = create<AreaStore>((set, get) => ({
                 }
             )
             .catch(reason => console.log(reason))
+        return {}
+    }),
+    cleanDots: (access: Access) => set((state: AreaStore) => {
+        cleanDots(access)
+            .then(response => {
+                if (response.status == 200){
+                    state.setDots([])
+                }
+            })
+
         return {}
     }),
 

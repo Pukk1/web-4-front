@@ -2,7 +2,7 @@ import * as React from "react";
 import {useRef} from "react";
 import {useAreaStore} from "../../../../context/areaStore";
 
-const Inputs = (props: { sendByButton: (x: string, y: string) => void }) => {
+const Inputs = (props: { onSendButtonClick: (x: string, y: string) => void, onCleanButtonClick: () => void }) => {
 
     const xRef: any = useRef()
     const yRef: any = useRef()
@@ -90,8 +90,12 @@ const Inputs = (props: { sendByButton: (x: string, y: string) => void }) => {
 
         <label>{message}</label>
         <button className="btn btn-block btn-accent" onClick={() => {
-            props.sendByButton(xRef.current.value, yRef.current.value)
+            props.onSendButtonClick(xRef.current.value, yRef.current.value)
         }}>Check Dot
+        </button>
+        <button className="btn btn-block btn-accent" onClick={() => {
+            props.onCleanButtonClick()
+        }}>Clean
         </button>
 
     </div>

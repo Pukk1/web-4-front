@@ -18,8 +18,9 @@ const AreaCheck = ({access}: AreaCheckProps) => {
     const setErrY = useAreaStore(state => state.setYErr)
     const setErrR = useAreaStore(state => state.setRErr)
     const rParam = useAreaStore(state => state.rParam)
+    const cleanDots = useAreaStore(state => state.cleanDots)
 
-    const areaClick = (e: any) => {
+    const onAreaClick = (e: any) => {
         let x: number = e.nativeEvent.offsetX - 249.5
         let y: number = e.nativeEvent.offsetY - 249.5
         let r: string | number = rParam
@@ -37,10 +38,14 @@ const AreaCheck = ({access}: AreaCheckProps) => {
         }
     }
 
-    const buttonClick = (x: string, y: string) => {
+    const onSaveButtonClick = (x: string, y: string) => {
         if (validate(x, y, rParam)) {
             storeDot({x: Number(x), y: Number(y), r: Number(rParam)}, access.accessToken)
         }
+    }
+
+    const onCleanButtonClick = () => {
+        cleanDots(access)
     }
 
     const cleanMessages = () => {
@@ -108,10 +113,10 @@ const AreaCheck = ({access}: AreaCheckProps) => {
 
     return <div className={"dotsWork"}>
         <div className={"area"}>
-            <AreaContainer dots={dots} click={areaClick}/>
+            <AreaContainer dots={dots} click={onAreaClick}/>
         </div>
         <div className={"inputs"}>
-            <Inputs sendByButton={buttonClick}/>
+            <Inputs onSendButtonClick={onSaveButtonClick} onCleanButtonClick={onCleanButtonClick}/>
         </div>
     </div>
 }
