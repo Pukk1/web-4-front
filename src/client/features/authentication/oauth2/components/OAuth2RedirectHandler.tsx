@@ -1,12 +1,13 @@
 import * as React from "react";
 import {Navigate, useLocation} from "react-router-dom";
-import {AUTH_PAGE_URI, MAIN_PAGE_URI} from "../../../../data/constants";
 import {printError, useStore} from "../../../../context/store";
+import jwtDecode from "jwt-decode";
 
 const OAuth2RedirectHandler = () => {
 
     const location = useLocation()
     const setAccessToken = useStore(state => state.setAccessToken)
+    const setCurrentAccount = useStore(state => state.setCurrentAccount)
 
     function getUrlParameter(name: string) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -21,11 +22,14 @@ const OAuth2RedirectHandler = () => {
 
 
     if (token) {
+        const accountName = jwtDecode(token)['name'];
+
         setAccessToken(token)
-        return <Navigate to={MAIN_PAGE_URI}/>;
+        setCurrentAccount({name: accountName})
+        return <Navigate to={"/main"}/>;
     } else {
         printError(error)
-        return <Navigate to={AUTH_PAGE_URI}/>;
+        return <Navigate to={"/auth"}/>;
     }
 
 }

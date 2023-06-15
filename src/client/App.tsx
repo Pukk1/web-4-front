@@ -1,11 +1,10 @@
 import * as React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import AppHeader from "./layouts/AppHeader";
 import PrivateRoute from "./utils/PrivateRoute";
 import {useStore} from "./context/store";
 import MainPage from "./pages/MainPage";
-import {AUTH_PAGE_URI, MAIN_PAGE_URI} from "./data/constants";
 import OAuth2RedirectHandler from "./features/authentication/oauth2/components/OAuth2RedirectHandler";
 
 
@@ -19,20 +18,20 @@ const App = () => {
             <AppHeader currentAccount={currentAccount} onLogout={onLogout}/>
         </div>
         <Routes>
-            <Route path={AUTH_PAGE_URI} element={
+            <Route path="/auth/*" element={
                 <PrivateRoute
                     isAccessible={currentAccount === null}
                     child={<AuthPage/>}
-                    redirectPath={MAIN_PAGE_URI}/>
+                    redirectPath="/main"/>
             }/>
-            <Route path={MAIN_PAGE_URI} element={
+            <Route path="/main" element={
                 <PrivateRoute
                     isAccessible={currentAccount !== null}
                     child={<MainPage/>}
-                    redirectPath={AUTH_PAGE_URI}/>
+                    redirectPath="/auth"/>
             }/>
-            <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler/>}></Route>
-            <Route path={"asd"} element={<div>asd</div>}/>
+            <Route path="/redirect/auth" element={<OAuth2RedirectHandler/>}></Route>
+            <Route path="*" element={<Navigate to={"/auth"}/>}/>
         </Routes>
     </div>)
 

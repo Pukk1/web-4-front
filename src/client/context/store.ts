@@ -13,7 +13,7 @@ export interface Store {
     currentAccount: CurrentAccountType,
 
     setAccessToken: (accessToken: AccessTokenType) => void
-    _setCurrentAccount: (currentAccount: CurrentAccountType) => void
+    setCurrentAccount: (currentAccount: CurrentAccountType) => void
     logOut: LogOutType
 }
 
@@ -27,11 +27,11 @@ export const useStore = create<Store>((set, get) => ({
 
     setAccessToken: (accessToken) =>
         set((store: Store) => ({accessToken: accessToken})),
-    _setCurrentAccount: (currentAccount: CurrentAccountType) =>
+    setCurrentAccount: (currentAccount: CurrentAccountType) =>
         set((store: Store) => ({currentAccount: currentAccount})),
 
     logOut: () => set((store: Store) => {
-        store._setCurrentAccount(null)
+        store.setCurrentAccount(null)
         store.setAccessToken(null)
         return {}
     }),
