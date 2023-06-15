@@ -1,8 +1,8 @@
 import * as React from "react";
-import {PointType} from "../../types/Point";
+import {NewPoint} from "../../types";
 import {useAreaStore} from "../../../../context/areaStore";
 
-const Area = (props: { dots: Array<PointType>, click: Function, checkDot: (dot: PointType) => boolean }) => {
+const Area = (props: { dots: Array<NewPoint>, click: Function, checkDot: (dot: NewPoint) => boolean }) => {
 
 
     const rParam = useAreaStore(state => state.rParam)

@@ -1,22 +1,23 @@
 import * as React from "react";
 import Inputs from "./inputs/Inputs";
 import AreaContainer from "./area/AreaContainer";
-import {PointType} from "../types/Point";
+import {NewPoint} from "../types";
 import {useAreaStore} from "../../../context/areaStore";
-import {useStore} from "../../../context/store";
+import {Access} from "../../../context/store";
 
-const AreaCheck = () => {
+export type AreaCheckProps = {
+    access: Access,
+}
+
+const AreaCheck = ({access}: AreaCheckProps) => {
 
 
-    const dots: Array<PointType> = useAreaStore(state => state.dots)
-    const sendDot = useAreaStore(state => state.sendDot)
-    // const rRef: any = useRef()
+    const dots: Array<NewPoint> = useAreaStore(state => state.dots)
+    const storeDot = useAreaStore(state => state.storeDot)
     const setErrX = useAreaStore(state => state.setXErr)
     const setErrY = useAreaStore(state => state.setYErr)
     const setErrR = useAreaStore(state => state.setRErr)
     const rParam = useAreaStore(state => state.rParam)
-
-    const accessToken = useStore(state => state.accessToken)
 
     const areaClick = (e: any) => {
         let x: number = e.nativeEvent.offsetX - 249.5
@@ -29,7 +30,7 @@ const AreaCheck = () => {
             x = Math.round(x * 1000) / 1000
             y = Math.round(y * 1000) / 1000
             if (validate(x, y, r)) {
-                sendDot({x: x, y: y, r: Number(r)}, accessToken)
+                storeDot({x: x, y: y, r: Number(r)}, access.accessToken)
             }
         } catch (e) {
             setErrR("R - не число")
@@ -38,7 +39,7 @@ const AreaCheck = () => {
 
     const buttonClick = (x: string, y: string) => {
         if (validate(x, y, rParam)) {
-            sendDot({x: Number(x), y: Number(y), r: Number(rParam)}, accessToken)
+            storeDot({x: Number(x), y: Number(y), r: Number(rParam)}, access.accessToken)
         }
     }
 

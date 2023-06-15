@@ -5,8 +5,9 @@ import {printError, useStore} from "../../../../context/store";
 import {loginApiCall} from "../services/basicAuth";
 import jwtDecode from "jwt-decode";
 
-export interface AuthToken {
+export type AuthToken = {
     name: string;
+    username: string;
 }
 
 const UsernamePasswordLoginForm = () => {
@@ -15,8 +16,7 @@ const UsernamePasswordLoginForm = () => {
     const [password, setPassword] = useState("")
     let navigate = useNavigate()
 
-    const setAccessToken = useStore(state => state.setAccessToken)
-    const setCurrentAccount = useStore(state => state.setCurrentAccount)
+    const setCurrentAccount = useStore(state => state.setCurrentAccess)
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
@@ -24,10 +24,11 @@ const UsernamePasswordLoginForm = () => {
         loginApiCall(username, password)
             .then(response => {
                 const token = response.headers['authorization']
-                const accountName = jwtDecode<AuthToken>(token)['name'];
+                const claims = jwtDecode<AuthToken>(token)
+                const accountName = claims['name'];
+                const username = claims['username']
 
-                setAccessToken(token)
-                setCurrentAccount({name: accountName})
+                setCurrentAccount({accessToken: token, username: username, accountName: accountName})
                 navigate("/redirect/auth?token=" + token)
             })
             .catch(error => {

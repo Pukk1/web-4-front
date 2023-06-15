@@ -1,30 +1,9 @@
-import {PointType} from "../types/Point";
+import {NewPoint} from "../types";
 import {API_BASE_URL} from "../../../data/constants";
 import axios from "axios";
-import {AccessTokenType} from "../../../context/store";
+import {AccessToken, Access} from "../../../context/store";
 
-export const sendDot = (dot: PointType, token: AccessTokenType) => {
-    // axios({
-    //     method: 'put',
-    //     url: API_BASE_URL + `/add-dot`,
-    //     params: {
-    //         x: dot.x,
-    //         y: dot.y,
-    //         r: dot.r
-    //     },
-    //     headers: {
-    //         'Authorization': token,
-    //     }
-    // }).then(
-    //     () => {
-    //         console.log('Точка успешно добавлена')
-    //     }
-    // ).catch(
-    //     (err) => {
-    //         console.log(err)
-    //         errCallBack()
-    //     }
-    // )
+export const sendDot = (dot: NewPoint, token: AccessToken) => {
 
     return axios.post(
         API_BASE_URL + '/api/v1/area-point',
@@ -34,9 +13,17 @@ export const sendDot = (dot: PointType, token: AccessTokenType) => {
                 'Authorization': "Bearer " + token,
             }
         })
-        // .then(
-        //     (response) => {
-        //         console.log('Точка успешно добавлена')
-        //     }
-        // )
+}
+
+export const getAllAccountDots = (access: Access) => {
+    return axios.get(
+        API_BASE_URL + '/api/v1/area-point/get-all',
+        {
+            headers: {
+                'Authorization': "Bearer " + access.accessToken,
+            },
+            params: {
+                'username': access.username
+            }
+        })
 }

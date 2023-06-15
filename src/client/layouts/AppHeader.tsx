@@ -1,9 +1,9 @@
 import * as React from "react";
-import {CurrentAccountType, LogOutType} from "../context/store";
+import {CurrentAccess, LogOut} from "../context/store";
 
-interface AppHeaderProps {
-    currentAccount: CurrentAccountType,
-    onLogout: LogOutType
+export type AppHeaderProps = {
+    currentAccount: CurrentAccess,
+    onLogout: LogOut
 }
 
 const AppHeader = ({currentAccount, onLogout}: AppHeaderProps) => {

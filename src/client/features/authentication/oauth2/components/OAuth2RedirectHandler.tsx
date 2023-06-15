@@ -7,8 +7,8 @@ import {AuthToken} from "../../basic/components/UsernamePasswordLoginForm";
 const OAuth2RedirectHandler = () => {
 
     const location = useLocation()
-    const setAccessToken = useStore(state => state.setAccessToken)
-    const setCurrentAccount = useStore(state => state.setCurrentAccount)
+    // const setAccessToken = useStore(state => state.setAccessToken)
+    const setCurrentAccess = useStore(state => state.setCurrentAccess)
 
     function getUrlParameter(name: string) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -23,10 +23,11 @@ const OAuth2RedirectHandler = () => {
 
 
     if (token) {
-        const accountName = jwtDecode<AuthToken>(token)['name'];
+        const claims = jwtDecode<AuthToken>(token)
+        const accountName = claims.name;
+        const username = claims.username;
 
-        setAccessToken(token)
-        setCurrentAccount({name: accountName})
+        setCurrentAccess({accessToken: token, username: username, accountName: accountName})
         return <Navigate to={"/main"}/>;
     } else {
         printError(error)

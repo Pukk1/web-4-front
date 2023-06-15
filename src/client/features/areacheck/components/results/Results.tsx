@@ -1,11 +1,11 @@
 import * as React from "react";
 import {useAreaStore} from "../../../../context/areaStore";
-import {PointType} from "../../types/Point";
+import {NewPoint, StoredPoint} from "../../types";
 
 const Results = () => {
 
     const dots = useAreaStore(state=>state.dots)
-    let res = dots.map((item:PointType) => {
+    let res = dots.map((item:StoredPoint) => {
         return <tr key={item.id}>
             <th>{item.id}</th>
             <td>{item.x}</td>

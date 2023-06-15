@@ -1,16 +1,15 @@
 import {create} from "zustand";
-import {PointType} from "../features/areacheck/types/Point";
+import {NewPoint, StoredPoint} from "../features/areacheck/types";
 import {sendDot} from "../features/areacheck/services/checkArea";
-import {AccessTokenType} from "./store";
-import {response} from "express";
+import {AccessToken} from "./store";
 
-export interface AreaStore {
+export type AreaStore = {
 
-    dots: Array<PointType>
+    dots: Array<StoredPoint>
 
-    setDot: (dot: PointType) => void
-    setDots: (dots: Array<PointType>) => void
-    sendDot: (dot: PointType, accessToken: AccessTokenType) => void
+    setDot: (dot: StoredPoint) => void
+    setDots: (dots: Array<StoredPoint>) => void
+    storeDot: (dot: NewPoint, accessToken: AccessToken) => void
 
     message: string,
     xErr: string,
@@ -28,20 +27,21 @@ export const useAreaStore = create<AreaStore>((set, get) => ({
 
     dots: [],
 
-    setDots: (dots: Array<PointType>) => set((state: AreaStore) => {
+    setDots: (dots: Array<StoredPoint>) => set((state: AreaStore) => {
         state.dots = dots
         return {}
     }),
-    setDot: (dot: PointType) => set((state: AreaStore) => ({
+    setDot: (dot: StoredPoint) => set((state: AreaStore) => ({
         dots: [dot].concat(state.dots)
     })),
 
-    sendDot: (dot: PointType, token: AccessTokenType) => set((state: AreaStore) => {
+    storeDot: (dot: NewPoint, token: AccessToken) => set((state: AreaStore) => {
         sendDot(dot, token)
             .then(response => {
                     if (response.status == 200) {
                         const data = response.data
-                        const newPoint : PointType = {
+                        const newPoint : StoredPoint = {
+                            id: data.id,
                             x: data.x,
                             y: data.y,
                             r: data.r,
