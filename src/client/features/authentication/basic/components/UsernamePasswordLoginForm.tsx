@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {printError, useStore} from "../../../../context/store";
 import {loginApiCall} from "../services/basicAuth";
 import jwtDecode from "jwt-decode";
@@ -44,6 +44,7 @@ const UsernamePasswordLoginForm = () => {
                    onChange={(event) => setPassword(event.target.value)}/>
             <button type="submit">Save</button>
         </form>
+        <span className="register-link">New user? <Link to="/auth/registration">Registration!</Link></span>
     </div>
 }
 

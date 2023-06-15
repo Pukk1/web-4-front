@@ -9,9 +9,6 @@ const UsernamePasswordForm = () => {
             <Route index element={<UsernamePasswordLoginForm/>}/>
             <Route path="/registration" element={<UsernamePasswordRegistrationForm/>}/>
         </Routes>
-
-        <span className="register-link">New user? <Link to="registration">Registration!</Link></span>
-        <span className="login-link">Have account? <Link to="">Login!</Link></span>
     </div>
 }
 

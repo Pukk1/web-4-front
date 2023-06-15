@@ -11,7 +11,11 @@ const AppHeader = ({currentAccount, onLogout}: AppHeaderProps) => {
     if (currentAccount === null) {
         return <div></div>
     } else {
-        return <div></div>
+        return <div>
+            <button onClick={onLogout}>
+                Logout
+            </button>
+        </div>
     }
 }
 

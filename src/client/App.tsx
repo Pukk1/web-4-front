@@ -13,14 +13,6 @@ const App = () => {
     const currentAccess = useStore(state => state.currentAccount)
     const onLogout = useStore(state => state.logOut)
 
-    /*function ifNotNull<Type>(element: Type) {
-        if (element === null) {
-            throw throw new DOMException("Nullable value of element (type=" + Type.name + ')')
-        } else {
-            return element
-        }
-    }*/
-
     return (<div className="app">
         <div>
             <AppHeader currentAccount={currentAccess} onLogout={onLogout}/>
