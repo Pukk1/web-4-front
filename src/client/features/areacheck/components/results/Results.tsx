@@ -6,8 +6,7 @@ const Results = () => {
 
     const dots = useAreaStore(state=>state.dots)
     let res = dots.map((item:StoredPoint) => {
-        return <tr key={item.id}>
-            <th>{item.id}</th>
+        return <tr>
             <td>{item.x}</td>
             <td>{item.y}</td>
             <td>{item.r}</td>
@@ -20,7 +19,6 @@ const Results = () => {
         <table className="table w-full table-compact">
             <thead>
             <tr>
-                <th></th>
                 <th>X</th>
                 <th>Y</th>
                 <th>R</th>
@@ -32,7 +30,6 @@ const Results = () => {
             </tbody>
             <tfoot>
             <tr>
-                <th></th>
                 <th>X</th>
                 <th>Y</th>
                 <th>R</th>
