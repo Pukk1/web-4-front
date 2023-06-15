@@ -1,7 +1,8 @@
 import axios from "axios";
 import {API_BASE_URL} from "../../../../data/constants";
+import {genBasicAuthHash} from "../../../../utils/basicAuthHash";
 
-export const loginApiCall = (username: string, password: string) => {
+export const loginApi = (username: string, password: string) => {
     return axios
         .post(API_BASE_URL + "/login/basic", {}, {
             headers: {
@@ -10,12 +11,9 @@ export const loginApiCall = (username: string, password: string) => {
         })
 }
 
-function genBasicAuthHash(user: string, password: string) {
-    let token = user + ":" + password;
-
-    // Should i be encoding this value????? does it matter???
-    // Base64 Encoding -> btoa
-    let hash = btoa(token);
-
-    return "Basic " + hash;
+export const registerApi = (name: string, username: string, password: string) => {
+    return axios
+        .post(API_BASE_URL + "/registration/local",
+            {accountName: name, username: username, password: password}
+        )
 }

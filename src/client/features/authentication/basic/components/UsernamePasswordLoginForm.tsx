@@ -2,7 +2,7 @@ import * as React from "react";
 import {FormEvent, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {printError, useStore} from "../../../../context/store";
-import {loginApiCall} from "../services/basicAuth";
+import {loginApi} from "../services/basicAuth";
 import jwtDecode from "jwt-decode";
 
 export type AuthToken = {
@@ -21,7 +21,7 @@ const UsernamePasswordLoginForm = () => {
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
 
-        loginApiCall(username, password)
+        loginApi(username, password)
             .then(response => {
                 const token = response.headers['authorization']
                 const claims = jwtDecode<AuthToken>(token)
@@ -38,11 +38,11 @@ const UsernamePasswordLoginForm = () => {
 
     return <div className="login-form">
         <form onSubmit={handleSubmit}>
-            <input name="login" type="text" placeholder="Username" value={username}
+            <input name="username" type="text" placeholder="Username" value={username}
                    onChange={(event) => setUsername(event.target.value)}/>
             <input name="password" type="password" placeholder="Password" value={password}
                    onChange={(event) => setPassword(event.target.value)}/>
-            <button type="submit">Save</button>
+            <button type="submit">Login</button>
         </form>
         <span className="register-link">New user? <Link to="/auth/registration">Registration!</Link></span>
     </div>
