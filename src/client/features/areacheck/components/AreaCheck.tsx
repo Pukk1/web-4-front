@@ -87,11 +87,7 @@ const AreaCheck = ({access}: AreaCheckProps) => {
     }
 
     const rNotNullNumber = (r: number) => {
-        if (r === 0) {
-            return false
-        } else {
-            return true
-        }
+        return r !== 0;
     }
 
     const validate: (x: any, y: any, r: any) => boolean = (x, y, r) => {

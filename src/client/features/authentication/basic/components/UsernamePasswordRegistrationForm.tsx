@@ -9,6 +9,7 @@ const UsernamePasswordRegistrationForm = () => {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errMessage, setErrMessage] = useState("")
 
     const navigate = useNavigate()
 
@@ -20,12 +21,17 @@ const UsernamePasswordRegistrationForm = () => {
                 navigate("/auth")
             })
             .catch(error => {
-                printError(error)
+                if (error.response.status == 409) {
+                    setErrMessage("Username already using")
+                } else {
+                    printError(error)
+                }
             })
     }
 
     return <div className="registration-form">
         <form onSubmit={handleSubmit}>
+            <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
             <input name="name" type="text" placeholder="Name" value={name}
                    onChange={(event) => setName(event.target.value)}/>
             <input name="username" type="text" placeholder="Username" value={username}

@@ -14,6 +14,7 @@ const UsernamePasswordLoginForm = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errMessage, setErrMessage] = useState("")
     let navigate = useNavigate()
 
     const setCurrentAccount = useStore(state => state.setCurrentAccess)
@@ -32,12 +33,17 @@ const UsernamePasswordLoginForm = () => {
                 navigate("/redirect/auth?token=" + token)
             })
             .catch(error => {
-                printError(error)
+                if (error.response.status == 401) {
+                    setErrMessage("Invalid username or password")
+                } else {
+                    printError(error)
+                }
             })
     }
 
     return <div className="login-form">
         <form onSubmit={handleSubmit}>
+            <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
             <input name="username" type="text" placeholder="Username" value={username}
                    onChange={(event) => setUsername(event.target.value)}/>
             <input name="password" type="password" placeholder="Password" value={password}
