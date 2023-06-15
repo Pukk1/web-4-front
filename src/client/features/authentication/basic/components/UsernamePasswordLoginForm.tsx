@@ -38,7 +38,7 @@ const UsernamePasswordLoginForm = () => {
 
     return <div className="login-form">
         <form onSubmit={handleSubmit}>
-            <input name="login" type="text" placeholder="Name" value={username}
+            <input name="login" type="text" placeholder="Username" value={username}
                    onChange={(event) => setUsername(event.target.value)}/>
             <input name="password" type="password" placeholder="Password" value={password}
                    onChange={(event) => setPassword(event.target.value)}/>
