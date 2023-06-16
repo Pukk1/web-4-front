@@ -6,6 +6,5 @@
   ],
   "plugins": [
     "@loadable/babel-plugin",
-    "babel-plugin-styled-components"
   ]
 }

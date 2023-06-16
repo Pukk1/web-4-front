@@ -7,6 +7,5 @@ module.exports = {
         '@babel/proposal-object-rest-spread',
         '@babel/proposal-class-properties',
         "@loadable/babel-plugin",
-        "babel-plugin-styled-components"
     ]
 };
