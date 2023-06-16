@@ -50,7 +50,11 @@ const UsernamePasswordRegistrationForm = () => {
                 <button type="submit" className="btn btn-active btn-success">Register</button>
             </div>
         </form>
-        <span className="login-link">Have account? <Link to="/auth">Login!</Link></span>
+        <span className="login-link">Have account?
+            <Link to="/auth">
+                <button className="btn btn-link">Login!</button>
+            </Link>
+        </span>
     </div>
 }
 

@@ -58,7 +58,7 @@ const AreaCheck = ({access}: AreaCheckProps) => {
         try {
             param = String(param)
             if (param === "") {
-                throw "Пустая строка!"
+                throw new DOMException("Пустая строка!")
             }
             if (param.length > 17) {
                 setErr("В поле не может быть больше 17 символов");

@@ -8,7 +8,7 @@ const AuthPage = () => {
             <OAuth2Form/>
         </div>
         <div>
-            <span className="or-text">OR</span>
+            <div className="divider">OR</div>
         </div>
         <div>
             <UsernamePasswordForm/>

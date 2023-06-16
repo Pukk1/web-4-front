@@ -27,6 +27,10 @@ const Inputs = (props: { onSendButtonClick: (x: string, y: string) => void, onCl
         setRParam(value)
     }
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     let x = 0
 
     return <div>
@@ -88,16 +92,23 @@ const Inputs = (props: { onSendButtonClick: (x: string, y: string) => void, onCl
             </button>
         </div>
 
-        <label>{message}</label>
-        <button className="btn btn-block btn-accent" onClick={() => {
-            props.onSendButtonClick(xRef.current.value, yRef.current.value)
-        }}>Check Dot
-        </button>
-        <button className="btn btn-block btn-accent" onClick={() => {
-            props.onCleanButtonClick()
-        }}>Clean
-        </button>
-
+        <div>
+            <label>{message}</label>
+            <div>
+                <button className="btn btn-wide btn-outline btn-success" onClick={() => {
+                    props.onSendButtonClick(xRef.current.value, yRef.current.value)
+                    scrollToTop()
+                }}>Check point
+                </button>
+            </div>
+            <div>
+                <button className="btn btn-wide btn-outline btn-warning" onClick={() => {
+                    props.onCleanButtonClick()
+                    scrollToTop()
+                }}>Clean
+                </button>
+            </div>
+        </div>
     </div>
 }
 export default Inputs

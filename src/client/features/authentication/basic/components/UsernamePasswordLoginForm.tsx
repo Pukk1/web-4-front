@@ -58,7 +58,11 @@ const UsernamePasswordLoginForm = () => {
                 <button type="submit" className="btn btn-active btn-success">Login</button>
             </div>
         </form>
-        <span className="register-link">New user? <Link to="/auth/registration">Registration!</Link></span>
+        <span className="register-link">New user?
+            <Link to="/auth/registration">
+            <button className="btn btn-link">Registration!</button>
+            </Link>
+        </span>
     </div>
 }
 
