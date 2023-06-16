@@ -30,8 +30,6 @@ app.use('*', (req, res) => {
 
     indexHTML = indexHTML.replace('<div id="root"></div>', `<div id="root">${appHTML}</div>`)
 
-    const scriptTags = extractor.getScriptTags()
-
     res.contentType('text/html');
     res.status(200);
 

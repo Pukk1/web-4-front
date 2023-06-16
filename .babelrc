@@ -5,6 +5,7 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "@loadable/babel-plugin"
+    "@loadable/babel-plugin",
+    "babel-plugin-styled-components"
   ]
 }

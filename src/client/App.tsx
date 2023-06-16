@@ -33,7 +33,7 @@ const App = () => {
                     redirectPath="/auth"/>
             }/>
             <Route path="/redirect/auth" element={<OAuth2RedirectHandler/>}></Route>
-            <Route path="*" element={<Navigate to={"/auth"}/>}/>
+            <Route path="*" element={<Navigate to={"/auth"} replace/>}/>
         </Routes>
     </div>)
 
