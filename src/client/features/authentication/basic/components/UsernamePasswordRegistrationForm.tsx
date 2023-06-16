@@ -34,16 +34,31 @@ const UsernamePasswordRegistrationForm = () => {
             <div>
                 <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
             </div>
+            {/*<div>*/}
+            {/*    <input name="name" type="text" placeholder="Name" value={name}*/}
+            {/*           onChange={(event) => setName(event.target.value)}/>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <input name="username" type="text" placeholder="Username" value={username}*/}
+            {/*           onChange={(event) => setUsername(event.target.value)}/>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <input name="password" type="password" placeholder="Password" value={password}*/}
+            {/*           onChange={(event) => setPassword(event.target.value)}/>*/}
+            {/*</div>*/}
             <div>
-                <input name="name" type="text" placeholder="Name" value={name}
+                <input name="name" type="text" placeholder="Name"
+                       className="input input-bordered input-success w-full max-w-xs" value={name}
                        onChange={(event) => setName(event.target.value)}/>
             </div>
             <div>
-                <input name="username" type="text" placeholder="Username" value={username}
+                <input name="username" type="text" placeholder="Username"
+                       className="input input-bordered input-success w-full max-w-xs" value={username}
                        onChange={(event) => setUsername(event.target.value)}/>
             </div>
             <div>
-                <input name="password" type="password" placeholder="Password" value={password}
+                <input name="password" type="password" placeholder="Password"
+                       className="input input-bordered input-success w-full max-w-xs" value={password}
                        onChange={(event) => setPassword(event.target.value)}/>
             </div>
             <div>

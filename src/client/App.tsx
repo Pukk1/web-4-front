@@ -17,7 +17,7 @@ const App = () => {
     const onLogout = useStore(state => state.logOut)
 
     return (<div className="app">
-        <div>
+        <div className="bordered">
             <AppHeader currentAccount={currentAccess} onLogout={onLogout}/>
         </div>
         <Routes>

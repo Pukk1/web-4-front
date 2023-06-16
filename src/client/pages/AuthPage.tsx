@@ -3,7 +3,7 @@ import UsernamePasswordForm from "../features/authentication/basic/components/Us
 import OAuth2Form from "../features/authentication/oauth2/components/OAuth2Form";
 
 const AuthPage = () => {
-    return <div className="auth-page">
+    return <div className="auth-page bordered">
         <div>
             <OAuth2Form/>
         </div>

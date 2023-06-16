@@ -111,8 +111,14 @@ const AreaCheck = ({access}: AreaCheckProps) => {
         <div className="area">
             <AreaContainer dots={dots} click={onAreaClick}/>
         </div>
+        <div>
+            <div className="divider"/>
+        </div>
         <div className="inputs">
             <Inputs onSendButtonClick={onSaveButtonClick} onCleanButtonClick={onCleanButtonClick}/>
+        </div>
+        <div>
+            <div className="divider"/>
         </div>
     </div>
 }

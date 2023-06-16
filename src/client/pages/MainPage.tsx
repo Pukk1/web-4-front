@@ -25,7 +25,7 @@ const MainPage = ({access}: MainPageProps) => {
         }
     )
 
-    return <div className="main-page">
+    return <div className="main-page bordered">
         <div className="dots-work-container">
             <AreaCheck access={access}/>
         </div>

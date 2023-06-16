@@ -9,5 +9,14 @@ html {
 }
 
 .app {
-    max-width: 530px;
+    max-width: 550px;
+}
+
+.auth-title {
+    font-size: xx-large;
+}
+
+.bordered {
+    border: 1px solid hsl(var(--pf));
+    border-radius: 10px;
 }
