@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useAreaStore} from "../../../../context/areaStore";
-import {NewPoint, StoredPoint} from "../../types";
+import {StoredPoint} from "../../types";
 
 const Results = () => {
 

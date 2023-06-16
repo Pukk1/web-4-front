@@ -31,14 +31,24 @@ const UsernamePasswordRegistrationForm = () => {
 
     return <div className="registration-form">
         <form onSubmit={handleSubmit}>
-            <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
-            <input name="name" type="text" placeholder="Name" value={name}
-                   onChange={(event) => setName(event.target.value)}/>
-            <input name="username" type="text" placeholder="Username" value={username}
-                   onChange={(event) => setUsername(event.target.value)}/>
-            <input name="password" type="password" placeholder="Password" value={password}
-                   onChange={(event) => setPassword(event.target.value)}/>
-            <button type="submit" className="btn btn-active btn-success">Register</button>
+            <div>
+                <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
+            </div>
+            <div>
+                <input name="name" type="text" placeholder="Name" value={name}
+                       onChange={(event) => setName(event.target.value)}/>
+            </div>
+            <div>
+                <input name="username" type="text" placeholder="Username" value={username}
+                       onChange={(event) => setUsername(event.target.value)}/>
+            </div>
+            <div>
+                <input name="password" type="password" placeholder="Password" value={password}
+                       onChange={(event) => setPassword(event.target.value)}/>
+            </div>
+            <div>
+                <button type="submit" className="btn btn-active btn-success">Register</button>
+            </div>
         </form>
         <span className="login-link">Have account? <Link to="/auth">Login!</Link></span>
     </div>

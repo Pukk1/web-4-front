@@ -5,9 +5,6 @@ import OAuth2Form from "../features/authentication/oauth2/components/OAuth2Form"
 const AuthPage = () => {
     return <div className="auth-page">
         <div>
-            <h1 className="auth-title">Auth in Ivan's web-4-lab</h1>
-        </div>
-        <div>
             <OAuth2Form/>
         </div>
         <div>

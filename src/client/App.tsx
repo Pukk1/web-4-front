@@ -7,6 +7,7 @@ import {Access, useStore} from "./context/store";
 // import MainPage from "./pages/MainPage";
 import OAuth2RedirectHandler from "./features/authentication/oauth2/components/OAuth2RedirectHandler";
 import loadable from '@loadable/component';
+import "./App.css"
 
 const MainPage = loadable(() => import("./pages/MainPage"))
 

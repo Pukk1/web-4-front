@@ -9,10 +9,18 @@ export type AppHeaderProps = {
 const AppHeader = ({currentAccount, onLogout}: AppHeaderProps) => {
 
     if (currentAccount === null) {
-        return <div></div>
+        return <div>
+            <h2 className="auth-title">Auth in Ivan's web-4-lab</h2>
+        </div>
     } else {
         return <div>
-            <button onClick={onLogout}>
+            <div>
+                <span>{"Current user: " + currentAccount.accountName}</span>
+            </div>
+            <div>
+                <h2 className="auth-title">Auth in Ivan's web-4-lab</h2>
+            </div>
+            <button className="btn btn-outline btn-info" onClick={onLogout}>
                 Logout
             </button>
         </div>

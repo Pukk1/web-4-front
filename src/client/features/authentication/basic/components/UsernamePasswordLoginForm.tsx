@@ -43,12 +43,20 @@ const UsernamePasswordLoginForm = () => {
 
     return <div className="login-form">
         <form onSubmit={handleSubmit}>
-            <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
-            <input name="username" type="text" placeholder="Username" value={username}
-                   onChange={(event) => setUsername(event.target.value)}/>
-            <input name="password" type="password" placeholder="Password" value={password}
-                   onChange={(event) => setPassword(event.target.value)}/>
-            <button type="submit" className="btn btn-active btn-success">Login</button>
+            <div>
+                <span style={{fontSize: "large", color: "red"}}>{errMessage}</span>
+            </div>
+            <div>
+                <input name="username" type="text" placeholder="Username" value={username}
+                       onChange={(event) => setUsername(event.target.value)}/>
+            </div>
+            <div>
+                <input name="password" type="password" placeholder="Password" value={password}
+                       onChange={(event) => setPassword(event.target.value)}/>
+            </div>
+            <div>
+                <button type="submit" className="btn btn-active btn-success">Login</button>
+            </div>
         </form>
         <span className="register-link">New user? <Link to="/auth/registration">Registration!</Link></span>
     </div>

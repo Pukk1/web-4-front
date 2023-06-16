@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack-dev-server --mode development",
+    "copy-files": "copy ./src/client/ ./dist/build/",
     "prestart:ssr": "webpack --mode production && tsc && npx tailwindcss -i ./src/input.css -o ./dist/output.css",
     "start:ssr": "node src/server/index.js"
   },
