@@ -20,6 +20,9 @@
     "@babel/preset-react": "7.22.3",
     "@babel/preset-typescript": "^7.21.5",
     "@babel/register": "^7.21.0",
+    "@loadable/babel-plugin": "^5.15.3",
+    "@loadable/webpack-plugin": "^5.15.2",
+    "@types/loadable__component": "^5.13.4",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
@@ -39,6 +42,7 @@
     "zustand": "^4.3.8"
   },
   "dependencies": {
+    "@loadable/server": "^5.15.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

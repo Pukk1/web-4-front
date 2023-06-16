@@ -4,9 +4,11 @@ import AuthPage from "./pages/AuthPage";
 import AppHeader from "./layouts/AppHeader";
 import PrivateRoute from "./utils/PrivateRoute";
 import {Access, useStore} from "./context/store";
-import MainPage from "./pages/MainPage";
+// import MainPage from "./pages/MainPage";
 import OAuth2RedirectHandler from "./features/authentication/oauth2/components/OAuth2RedirectHandler";
+import loadable from '@loadable/component';
 
+const MainPage = loadable(() => import("./pages/MainPage"))
 
 const App = () => {
 
